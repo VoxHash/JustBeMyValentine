@@ -29,11 +29,11 @@ A beautiful, interactive Valentine's Day proposal web application featuring mode
 ## 📸 Screenshots
 
 ### Main Proposal Page
-![Main Proposal Page](screenshots/main-proposal-page.png)
+![Main Proposal Page](screenshots/valentine-proposal-homepage.png)
 *The beautiful glassmorphism proposal interface with animated heart and interactive buttons*
 
 ### Full Interface with Customization Options
-![Full Interface](screenshots/full-interface-with-controls.png)
+![Full Interface](screenshots/valentine-proposal.png)
 *Complete interface showing sender mode, language selector, theme options, photo upload, and all customization features*
 
 ## 🚀 Quick Start
