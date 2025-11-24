@@ -32,9 +32,13 @@ A beautiful, interactive Valentine's Day proposal web application featuring mode
 ![Main Proposal Page](screenshots/valentine-proposal-homepage.png)
 *The beautiful glassmorphism proposal interface with animated heart and interactive buttons*
 
-### Full Interface with Customization Options
-![Full Interface](screenshots/valentine-proposal.png)
-*Complete interface showing sender mode, language selector, theme options, photo upload, and all customization features*
+### Exported Valentine Proposal Photo
+![Exported Valentine Proposal Photo](screenshots/valentine-proposal.png)
+*Complete valentine proposal showing photo, and all customization features*
+
+### Romantic Poem Page
+![Romantic Poem Page](screenshots/poem-screenshot.png)
+*The elegant poem page with floating flowers and hearts, displayed after accepting the proposal*
 
 ## 🚀 Quick Start
 
