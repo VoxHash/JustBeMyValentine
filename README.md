@@ -26,6 +26,16 @@ A beautiful, interactive Valentine's Day proposal web application featuring mode
 - **Save & Export** - Save your proposal settings and export as PNG image
 - **Animation Presets** - 5 different animation styles (Default, Bounce, Float, Pulse, Rotate, Wave)
 
+## 📸 Screenshots
+
+### Main Proposal Page
+![Main Proposal Page](screenshots/main-proposal-page.png)
+*The beautiful glassmorphism proposal interface with animated heart and interactive buttons*
+
+### Full Interface with Customization Options
+![Full Interface](screenshots/full-interface-with-controls.png)
+*Complete interface showing sender mode, language selector, theme options, photo upload, and all customization features*
+
 ## 🚀 Quick Start
 
 1. Clone the repository:
@@ -188,7 +198,6 @@ After accepting, `poem.html` shows:
 - [x] Add social media sharing functionality
 - [x] Implement save/export feature for the proposal
 - [x] Add more animation presets
-- [ ] Create mobile app version
 
 ## 🤝 Contributing
 
