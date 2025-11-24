@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Will You Be My Valentine?">
+    <meta property="og:description" content="A beautiful Valentine's Day proposal">
+    <meta property="og:type" content="website">
+    <title>Will You Be My Valentine?</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Audio Enable Overlay -->
+    <div class="audio-enable-overlay" id="audioEnableOverlay">
+        <div class="audio-enable-content">
+            <h2>🎵 Click to Enable Audio</h2>
+            <p>Click anywhere to start the romantic experience with sound</p>
+            <button class="audio-enable-btn" id="audioEnableBtn">Enable Audio</button>
+        </div>
+    </div>
+    
+    <div id="particles-js"></div>
+    
+    <!-- Sender Mode Indicator -->
+    <div class="sender-mode-indicator" id="senderModeIndicator" style="display: none;">
+        <div class="sender-mode-content">
+            <span>✏️ Sender Mode</span>
+            <button class="generate-link-btn" id="generateLinkBtn">Generate Shareable Link</button>
+        </div>
+    </div>
+
+    <!-- Generated Link Modal -->
+    <div class="link-modal" id="linkModal" style="display: none;">
+        <div class="link-modal-content">
+            <h3>Your Shareable Link</h3>
+            <p>Share this special link with your loved one:</p>
+            <div class="link-container">
+                <input type="text" id="generatedLink" readonly class="link-input">
+                <button class="copy-link-input-btn" id="copyLinkInputBtn">Copy</button>
+            </div>
+            <p class="link-note">When they open this link, they'll see your personalized proposal without the editing controls.</p>
+            <button class="close-link-modal" id="closeLinkModal">Close</button>
+        </div>
+    </div>
+    
+    <!-- Controls Panel -->
+    <div class="controls-panel" id="controlsPanel">
+        <div class="control-group">
+            <label for="languageSelect" class="control-label" data-i18n="selectLanguage">Language</label>
+            <select id="languageSelect" class="control-select">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+                <option value="it">Italiano</option>
+                <option value="pt">Português</option>
+                <option value="ja">日本語</option>
+                <option value="zh">中文</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label for="themeSelect" class="control-label" data-i18n="selectTheme">Select Theme</label>
+            <select id="themeSelect" class="control-select">
+                <option value="default">Default</option>
+                <option value="romantic">Romantic</option>
+                <option value="sunset">Sunset</option>
+                <option value="ocean">Ocean</option>
+                <option value="forest">Forest</option>
+                <option value="purple">Purple Dream</option>
+                <option value="dark">Dark Mode</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label for="animationSelect" class="control-label" data-i18n="animationPreset">Animation</label>
+            <select id="animationSelect" class="control-select">
+                <option value="default">Default</option>
+                <option value="bounce">Bounce</option>
+                <option value="float">Float</option>
+                <option value="pulse">Pulse</option>
+                <option value="rotate">Rotate</option>
+                <option value="wave">Wave</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label class="control-label">
+                <input type="checkbox" id="soundToggle" checked>
+                <span data-i18n="soundEnabled">Sound</span>
+            </label>
+        </div>
+    </div>
+    
+    <div class="container" id="mainContainer">
+        <!-- Photo Upload Area (Sender Only) -->
+        <div class="photo-upload-container" id="photoUploadContainer">
+            <input type="file" id="photoInput" accept="image/*" style="display: none;">
+            <div class="photo-preview" id="photoPreview">
+                <div class="photo-placeholder" data-i18n="photoPlaceholder">Add your photo here</div>
+                <button class="photo-upload-btn" id="photoUploadBtn" data-i18n="uploadPhoto">Upload Photo</button>
+            </div>
+        </div>
+        
+        <!-- Photo Display (Recipient View) -->
+        <div class="photo-display-container" id="photoDisplayContainer" style="display: none;">
+            <div class="photo-preview" id="photoDisplayPreview">
+                <div class="photo-placeholder" data-i18n="photoPlaceholder">Photo will appear here</div>
+            </div>
+        </div>
+
+        <div class="heart-container">
+            <div class="heart" id="heartElement"></div>
+        </div>
+        
+        <div class="content">
+            <h1 class="title" data-i18n="title">Will You Be My Valentine?</h1>
+            <p class="message" data-i18n="message">Every moment with you makes my heart skip a beat...</p>
+            
+            <div class="buttons">
+                <button id="yesBtn" class="btn yes-btn" data-i18n="yesBtn">Yes, I'd love to! 💖</button>
+                <button id="noBtn" class="btn no-btn" data-i18n="noBtn">No, thanks</button>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button class="action-btn share-btn" id="shareBtn" data-i18n="share">Share</button>
+            <button class="action-btn save-btn" id="saveBtn" data-i18n="save">Save</button>
+            <button class="action-btn export-btn" id="exportBtn" data-i18n="export">Export</button>
+        </div>
+
+        <div class="celebration" style="display: none;">
+            <h2 class="celebration-title" data-i18n="celebration">Yay! 🎉</h2>
+            <p class="celebration-message" data-i18n="celebrationMessage">You've made me the happiest person!</p>
+            <div class="floating-hearts"></div>
+        </div>
+    </div>
+
+    <!-- Social Share Modal -->
+    <div class="share-modal" id="shareModal" style="display: none;">
+        <div class="share-modal-content">
+            <h3>Share Your Proposal</h3>
+            <div class="share-buttons">
+                <a href="#" id="shareFacebook" class="share-link facebook" target="_blank">Facebook</a>
+                <a href="#" id="shareTwitter" class="share-link twitter" target="_blank">Twitter</a>
+                <a href="#" id="shareWhatsApp" class="share-link whatsapp" target="_blank">WhatsApp</a>
+                <button class="share-link copy-link" id="copyLinkBtn">Copy Link</button>
+            </div>
+            <button class="close-modal" id="closeShareModal">Close</button>
+        </div>
+    </div>
+
+    <script src="languages.js"></script>
+    <script src="themes.js"></script>
+    <script src="sounds.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
