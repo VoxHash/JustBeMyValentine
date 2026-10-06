@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Serve a real root `favicon.ico` (Valentine heart) and link it from `index.html` / `poem.html` so browsers and GitHub Pages no longer 404
+
 ## [1.0.0] - 2026-10-05
 
 ### Added
